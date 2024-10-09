@@ -1,9 +1,14 @@
-export type PositionType = "Developer" | "Manager" | "Designer";
+export type Book = {
+    title: string,
+    author: string,
+    year: number,
+    borrower: Reader | null;
+    isBorrowed: boolean
+}
 
-export type Employee = {
+export type Reader = {
     firstName: string,
     lastName: string,
-    age: number,
-    position: PositionType,
-    programmingLanguage: string[]
+    libraryCardNumber: number,
+
 }

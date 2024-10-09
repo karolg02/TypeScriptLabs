@@ -1,40 +1,23 @@
-import {Employee} from "./types";
+import {readers} from "./reader";
+import {borrowBook, catalog, findBook, getAvailableBooks} from "./book";
 
-const employees: Employee[] = [
-    {
-        firstName: "Karol",
-        lastName: "Glanowski",
-        age: 22,
-        position: "Developer",
-        programmingLanguage: ["C#", "JavaScript", "TypeScript"]
-    },
-]
+// const bookTitle = "Hamlet";
+// const foundBook = findBook(catalog, bookTitle);
+// //console printing
+// if(foundBook){
+//     console.log("Book is found!\n", JSON.stringify(foundBook,null, 2));
+// }else{
+//     console.log("Couldn't find the book :(\n", JSON.stringify(foundBook,null, 2));
+// }
+//
+// const availableBooks = getAvailableBooks();
+// //console printing
+// if(availableBooks){
+//     console.log("Available Books:");
+//     for(let e of availableBooks){
+//         console.log(JSON.stringify(availableBooks, null, 2));
+//     }
+// }
 
-const getDevelopers = (employees: Employee[]) => {
-    return employees.filter(e => e.position === "Developer");
-}
-
-const findEmployee = (employees: Employee[], name: string) => {
-    return employees.find(e => e.firstName.includes(name) || e.lastName.includes(name))
-}
-
-function addExperience(employee: Employee, lang: string) {
-    employee.programmingLanguage.push(lang);
-}
-
-function addExperiences(employee: Employee[], lang: string) {
-    return employee.map(e => e.programmingLanguage.push(lang));
-}
-
-console.log(employees);
-const developers: Employee[] = getDevelopers(employees);
-console.log("developers", developers);
-const karol = findEmployee(employees, "Karol");
-if (karol)
-    addExperience(karol, "C++");
-
-console.log("Karol tu byl");
-console.log(karol);
-
-addExperiences(developers, "C++");
-console.log(karol);
+const borrow = borrowBook(catalog,"Romeo and Juliet", readers[0]);
+console.log(findBook(borrow,"Romeo and Juliet"));
